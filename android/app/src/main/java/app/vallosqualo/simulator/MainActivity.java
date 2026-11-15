@@ -116,10 +116,11 @@ public class MainActivity extends Activity {
         web.onResume();
     }
 
+    /** Il tasto indietro chiude prima finestre e menu del gioco (o mette in pausa); solo se non c'e' niente da chiudere esce. */
     @Override
     public void onBackPressed() {
-        if (web.canGoBack()) web.goBack();
-        else super.onBackPressed();
+        web.evaluateJavascript("(function(){try{return !!(window.VSS_back&&window.VSS_back());}catch(e){return false;}})()",
+                risposta -> { if (!"true".equals(risposta)) moveTaskToBack(true); });
     }
 
     @Override

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Il gioco non usa la rete: il permesso serve solo perche' la finestra web accetti l'indirizzo interno. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Vibrazione quando raccogli, vendi o arriva la polizia (si spegne nelle Impostazioni del gioco). -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

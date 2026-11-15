@@ -15,6 +15,15 @@ Si cambia quello che serve dentro `gioco/` e si ricompila l'APK. Per
 aggiungere un seme, un cliente o un poliziotto basta la riga in `CONFIG` e
 l'immagine in `gioco/art/` con il nome indicato nei commenti.
 
+## Menu e impostazioni
+
+Dalla schermata del titolo: profilo (nome, foto, statistiche), amici e
+classifica (arrivano con la modalità online), info (guida e crediti) e
+impostazioni (musica, effetti, vibrazione, cancella partita). Le impostazioni
+valgono per il telefono e restano anche se si cancella la partita. Alla prima
+partita parte una guida in cinque passi. Il tasto indietro di Android chiude
+le finestre aperte o mette in pausa; esce solo dalla schermata del titolo.
+
 ## Compilare l'APK
 
 Servono Java 17 o più recente, Gradle 8.13+ e l'Android SDK (piattaforma 35,
@@ -28,7 +37,7 @@ gradle assembleRelease
 L'APK esce in `android/app/build/outputs/apk/release/app-release.apk`.
 
 A ogni nuova versione vanno aumentati `versionCode` e `versionName` in
-`android/app/build.gradle`.
+`android/app/build.gradle`, e `version` nel blocco `CONFIG` del gioco.
 
 ## Chiave di firma
 

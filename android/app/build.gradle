@@ -14,8 +14,8 @@ android {
         applicationId 'app.vallosqualo.simulator'
         minSdk 24
         targetSdk 34
-        versionCode 2
-        versionName '1.1.0'
+        versionCode 3
+        versionName '1.2.0'
     }
     // Il gioco (cartella gioco/ del repository) entra nell'APK cosi' com'e'.
     sourceSets { main { assets.srcDirs = [rootProject.file('../gioco')] } }
