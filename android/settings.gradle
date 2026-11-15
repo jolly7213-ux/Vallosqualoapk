@@ -1,0 +1,5 @@
+// Prima di Maven Central c'è il suo specchio su Google: stessi file, senza i limiti di download.
+pluginManagement { repositories { google(); maven { url 'https://maven-central.storage-download.googleapis.com/maven2/' }; mavenCentral(); gradlePluginPortal() } }
+dependencyResolutionManagement { repositories { google(); maven { url 'https://maven-central.storage-download.googleapis.com/maven2/' }; mavenCentral() } }
+rootProject.name = 'vallo-squalo'
+include ':app'

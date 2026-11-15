@@ -1,0 +1,42 @@
+plugins { id 'com.android.application' }
+
+// La chiave di firma: stesso file e stesse password a ogni versione,
+// altrimenti il telefono rifiuta l'aggiornamento sopra quella installata.
+def chiave = new Properties()
+def fileChiave = rootProject.file('keystore.properties')
+if (fileChiave.exists()) fileChiave.withInputStream { chiave.load(it) }
+
+android {
+    namespace 'app.vallosqualo.simulator'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'app.vallosqualo.simulator'
+        minSdk 24
+        targetSdk 34
+        versionCode 2
+        versionName '1.1.0'
+    }
+    // Il gioco (cartella gioco/ del repository) entra nell'APK cosi' com'e'.
+    sourceSets { main { assets.srcDirs = [rootProject.file('../gioco')] } }
+    signingConfigs {
+        release {
+            if (fileChiave.exists()) {
+                storeFile rootProject.file(chiave['storeFile'])
+                storePassword chiave['storePassword']
+                keyAlias chiave['keyAlias']
+                keyPassword chiave['keyPassword']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
